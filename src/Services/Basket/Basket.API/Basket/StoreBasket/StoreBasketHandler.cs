@@ -20,13 +20,14 @@
     }
 
     public class StoreBasketCommandHandler
+        (IBasketRepository repository)
         : ICommandHandler<StoreBasketCommand, StoreBasketResult>
     {
         public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
         {
-            ShoppingCart cart = command.Cart;
+            await repository.StoreBasket(command.Cart, cancellationToken);
 
-            return new StoreBasketResult("Ayxan");
+            return new StoreBasketResult(command.Cart.UserName);
         }
     }
 }
