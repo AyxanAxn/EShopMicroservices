@@ -1,7 +1,33 @@
 ﻿namespace Catalog.API.Products.CreateProduct;
+
 public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal Price)
     : ICommand<CreateProductResult>;
+
 public record CreateProductResult(Guid Id);
+
+public class CreateProductCommandValidator : AbstractValidator<CreateProductCommand>
+{
+    public CreateProductCommandValidator()
+    {
+        RuleFor(command => command.Name)
+            .NotEmpty()
+                .WithMessage("Name is required")
+            .Length(2, 150)
+                .WithMessage("Name must be between 2 and 150 characters"); ;
+        
+        RuleFor(command => command.Category)
+            .NotEmpty()
+                .WithMessage("Category is required");
+        
+        RuleFor(command => command.ImageFile)
+            .NotEmpty()
+                .WithMessage("ImageFile is required");
+       
+        RuleFor(command => command.Price)
+            .GreaterThan(0)
+                .WithMessage("Price must be greather than 0");
+    }
+}
 
 internal class CreateProductCommandHandler
     (IDocumentSession session)

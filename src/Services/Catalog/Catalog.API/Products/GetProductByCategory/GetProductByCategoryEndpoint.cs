@@ -19,7 +19,7 @@
             .WithSummary("Get Product By Category")
             .WithDescription("Get Product By Category")
             .ProducesProblem(StatusCodes.Status400BadRequest)
-            .Produces<GetProductByCategoryResponse>(StatusCodes.Status201Created);
+            .Produces<GetProductByCategoryResponse>(StatusCodes.Status200OK);
         }
     }
 }
