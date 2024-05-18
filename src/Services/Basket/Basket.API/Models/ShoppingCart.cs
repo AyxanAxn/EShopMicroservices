@@ -12,8 +12,6 @@
             UserName = username;
         }
         public ShoppingCart()
-        {
-
-        }
+        { }
     }
 }

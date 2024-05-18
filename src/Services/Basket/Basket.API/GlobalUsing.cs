@@ -8,6 +8,7 @@ global using BuildingBlocks.CQRS;
 global using Basket.API.Models;
 global using FluentValidation;
 global using Basket.API.Data;
+global using Discount.Grpc;
 global using MediatR;
 global using Mapster;
 global using Carter;
