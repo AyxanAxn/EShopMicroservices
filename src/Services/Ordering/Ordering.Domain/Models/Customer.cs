@@ -1,5 +1,4 @@
-﻿using Ordering.Domain.Abstractions;
-namespace Ordering.Domain.Models
+﻿namespace Ordering.Domain.Models
 {
     public class Customer : Entity<CustomerId>
     {
