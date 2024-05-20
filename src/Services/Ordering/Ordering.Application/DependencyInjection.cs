@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using BuildingBlocks.Behaviors;
 using System.Reflection;
 
 namespace Ordering.Application
@@ -7,9 +8,11 @@ namespace Ordering.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(ctg =>
+            services.AddMediatR(config =>
             {
-                ctg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                config.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly());
+                config.AddOpenBehavior(typeof(ValidationBehavior<,>));
+                config.AddOpenBehavior(typeof(LoggingBehavior<,>));
             });
             return services;
         }
