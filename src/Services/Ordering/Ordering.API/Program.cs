@@ -6,7 +6,7 @@ using Ordering.API;
 var builder = WebApplication.CreateBuilder(args);
 
 #region Added services
-builder.Services.AddApiServices()
+builder.Services.AddApiServices(builder.Configuration)
                 .AddApplicationServices()
                 .AddInfrastructureServices(builder.Configuration);
 #endregion

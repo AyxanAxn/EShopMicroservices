@@ -13,7 +13,7 @@ namespace Ordering.Application.Orders.Commands.UpdateOrder
         {
             var order = await context
                     .Orders
-                    .FindAsync(command.Order.Id, cancellationToken);
+                    .FindAsync(OrderId.Of(command.Order.Id), cancellationToken);
             if (order is null)
                 throw new OrderNotFoundException(command.Order.Id);
 
