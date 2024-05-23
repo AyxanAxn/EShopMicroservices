@@ -1,3 +1,5 @@
+using BuildingBlocks.Messaging.MassTransit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region Application Services
@@ -45,6 +47,10 @@ builder.Services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(
     ServerCertificateCustomValidationCallback =
     HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
 });
+#endregion
+
+#region Added message broker
+builder.Services.AddMessageBroker(builder.Configuration);
 #endregion
 
 #region Cross - Cutting Services
