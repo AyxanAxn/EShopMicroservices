@@ -23,5 +23,5 @@
             .WithSummary("Create Product")
             .WithDescription("Create Product");
         }
-    }
+    } 
 }
